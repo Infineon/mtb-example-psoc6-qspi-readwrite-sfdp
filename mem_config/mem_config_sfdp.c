@@ -10,7 +10,7 @@
 * Related Document: See README.md
 *
 *******************************************************************************
-* (c) 2019, Cypress Semiconductor Corporation. All rights reserved.
+* (c) 2019-2020, Cypress Semiconductor Corporation. All rights reserved.
 *******************************************************************************
 * This software, including source code, documentation and related materials
 * ("Software"), is owned by Cypress Semiconductor Corporation or one of its
@@ -223,6 +223,29 @@ cy_stc_smif_mem_cmd_t Auto_detect_SFDP_SlaveSlot_0_readSfdpCmd =
     .dataWidth = CY_SMIF_WIDTH_SINGLE
 };
 
+#if (CY_SMIF_DRV_VERSION_MAJOR > 1) || (CY_SMIF_DRV_VERSION_MINOR >= 50)
+cy_stc_smif_hybrid_region_info_t Auto_detect_SFDP_SlaveSlot_0_regionInfoStorage[16];
+
+cy_stc_smif_hybrid_region_info_t *Auto_detect_SFDP_SlaveSlot_0_regionInfo[16] = {
+    &Auto_detect_SFDP_SlaveSlot_0_regionInfoStorage[0],
+    &Auto_detect_SFDP_SlaveSlot_0_regionInfoStorage[1],
+    &Auto_detect_SFDP_SlaveSlot_0_regionInfoStorage[2],
+    &Auto_detect_SFDP_SlaveSlot_0_regionInfoStorage[3],
+    &Auto_detect_SFDP_SlaveSlot_0_regionInfoStorage[4],
+    &Auto_detect_SFDP_SlaveSlot_0_regionInfoStorage[5],
+    &Auto_detect_SFDP_SlaveSlot_0_regionInfoStorage[6],
+    &Auto_detect_SFDP_SlaveSlot_0_regionInfoStorage[7],
+    &Auto_detect_SFDP_SlaveSlot_0_regionInfoStorage[8],
+    &Auto_detect_SFDP_SlaveSlot_0_regionInfoStorage[9],
+    &Auto_detect_SFDP_SlaveSlot_0_regionInfoStorage[10],
+    &Auto_detect_SFDP_SlaveSlot_0_regionInfoStorage[11],
+    &Auto_detect_SFDP_SlaveSlot_0_regionInfoStorage[12],
+    &Auto_detect_SFDP_SlaveSlot_0_regionInfoStorage[13],
+    &Auto_detect_SFDP_SlaveSlot_0_regionInfoStorage[14],
+    &Auto_detect_SFDP_SlaveSlot_0_regionInfoStorage[15]
+};
+#endif
+
 cy_stc_smif_mem_device_cfg_t deviceCfg_Auto_detect_SFDP_SlaveSlot_0 =
 {
     /* Specifies the number of address bytes used by the memory slave device. */
@@ -262,7 +285,12 @@ cy_stc_smif_mem_device_cfg_t deviceCfg_Auto_detect_SFDP_SlaveSlot_0 =
     /* The max time for the chip-erase cycle-time in ms. */
     .chipEraseTime = 16U,
     /* The max time for the page-program cycle-time in us. */
-    .programTime = 8U
+    .programTime = 8U,
+#if (CY_SMIF_DRV_VERSION_MAJOR > 1) || (CY_SMIF_DRV_VERSION_MINOR >= 50)
+    /* Points to NULL or to structure with info about sectors for hybrid memory. */
+    .hybridRegionCount = 0U,
+    .hybridRegionInfo = Auto_detect_SFDP_SlaveSlot_0_regionInfo
+#endif
 };
 
 cy_stc_smif_mem_config_t Auto_detect_SFDP_SlaveSlot_0 =

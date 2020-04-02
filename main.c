@@ -7,7 +7,7 @@
 * Related Document: See README.md
 *
 *******************************************************************************
-* (c) 2019, Cypress Semiconductor Corporation. All rights reserved.
+* (c) 2019-2020, Cypress Semiconductor Corporation. All rights reserved.
 *******************************************************************************
 * This software, including source code, documentation and related materials
 * ("Software"), is owned by Cypress Semiconductor Corporation or one of its
@@ -61,7 +61,7 @@
 * Function Name: check_status
 ****************************************************************************//**
 * Summary:
-*  Prints the message, indicates the non-zero status by turning the LED on, and
+*  Prints the message, indicates the non-zero status (error condition) by turning the LED on, and
 *  asserts the non-zero status.
 *
 * Parameters: 
@@ -71,7 +71,7 @@
 *******************************************************************************/
 void check_status(char *message, uint32_t status)
 {
-    if(0u != status)
+    if (0u != status)
     {
         printf("\r\n================================================================================\r\n");
         printf("\nFAIL: %s\r\n", message);
@@ -102,11 +102,11 @@ void print_array(char *message, uint8_t *buf, uint32_t size)
     printf("\r\n%s (%u bytes):\r\n", message, (unsigned int)size);
     printf("-------------------------\r\n");
 
-    for(uint32_t index = 0; index < size; index++)
+    for (uint32_t index = 0; index < size; index++)
     {
         printf("0x%02X ", buf[index]);
 
-        if(0u == ((index + 1) % NUM_BYTES_PER_LINE))
+        if (0u == ((index + 1) % NUM_BYTES_PER_LINE))
         {
             printf("\r\n");
         }
@@ -154,7 +154,7 @@ int main(void)
     printf("********* CE228954 - PSoC 6 MCU QSPI Flash Read and Write Using SFDP **********\r\n\n");
     
     /* Initialize the User LED */
-    result = cyhal_gpio_init((cyhal_gpio_t) CYBSP_USER_LED, CYHAL_GPIO_DIR_OUTPUT,
+    result = cyhal_gpio_init(CYBSP_USER_LED, CYHAL_GPIO_DIR_OUTPUT,
               CYHAL_GPIO_DRIVE_STRONG, CYBSP_LED_STATE_OFF);
     check_status("User LED initialization failed", result);
         
@@ -181,7 +181,7 @@ int main(void)
             memcmp(tx_buf, rx_buf, PACKET_SIZE));
     
     /* Prepare the TX buffer */
-    for(uint32_t index = 0; index < PACKET_SIZE; index++)
+    for (uint32_t index = 0; index < PACKET_SIZE; index++)
     {
         tx_buf[index] = (uint8_t)index;
     }
@@ -206,10 +206,10 @@ int main(void)
     printf("\r\nSUCCESS: Read data matches with written data!\r\n");
     printf("\r\n================================================================================\r\n");
 
-    for(;;)
+    for (;;)
     {
-        cyhal_gpio_toggle((cyhal_gpio_t)CYBSP_USER_LED);
-        Cy_SysLib_Delay(LED_TOGGLE_DELAY_MSEC);
+        cyhal_gpio_toggle(CYBSP_USER_LED);
+        cyhal_system_delay_ms(LED_TOGGLE_DELAY_MSEC);
     }
 }
 

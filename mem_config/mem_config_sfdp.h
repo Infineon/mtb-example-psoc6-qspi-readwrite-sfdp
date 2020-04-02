@@ -11,7 +11,7 @@
 * Related Document: See README.md
 *
 *******************************************************************************
-* (c) 2019, Cypress Semiconductor Corporation. All rights reserved.
+* (c) 2019-2020, Cypress Semiconductor Corporation. All rights reserved.
 *******************************************************************************
 * This software, including source code, documentation and related materials
 * ("Software"), is owned by Cypress Semiconductor Corporation or one of its
@@ -45,6 +45,20 @@
 #ifndef MEM_CONFIG_SFDP_H
 #define MEM_CONFIG_SFDP_H
 #include "cy_smif_memslot.h"
+
+#define CY_SMIF_CFG_TOOL_VERSION           (210)
+
+/* Supported QSPI Driver version */
+#define CY_SMIF_DRV_VERSION_REQUIRED       (100)
+
+#if !defined(CY_SMIF_DRV_VERSION)
+    #define CY_SMIF_DRV_VERSION            (100)
+#endif
+
+/* Check the used Driver version */
+#if (CY_SMIF_DRV_VERSION_REQUIRED > CY_SMIF_DRV_VERSION)
+   #error The QSPI Configurator requires a newer version of the PDL. Update the PDL in your project.
+#endif
 
 #define CY_SMIF_DEVICE_NUM 1
 
