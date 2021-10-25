@@ -6,27 +6,28 @@
 *              (cy_smif_memslot.c/.h). This file is generated first using the
 *              QSPI Configurator tool and then some structures have been renamed
 *              to avoid collision with the memory configuration present in the 
-*              BSP. 
+*              BSP.
 *
 * Related Document: See README.md
 *
 *******************************************************************************
-* (c) 2019-2020, Cypress Semiconductor Corporation. All rights reserved.
-*******************************************************************************
-* This software, including source code, documentation and related materials
-* ("Software"), is owned by Cypress Semiconductor Corporation or one of its
-* subsidiaries ("Cypress") and is protected by and subject to worldwide patent
-* protection (United States and foreign), United States copyright laws and
-* international treaty provisions. Therefore, you may use this Software only
-* as provided in the license agreement accompanying the software package from
-* which you obtained this Software ("EULA").
+* Copyright 2019-2021, Cypress Semiconductor Corporation (an Infineon company) or
+* an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
 *
+* This software, including source code, documentation and related
+* materials ("Software") is owned by Cypress Semiconductor Corporation
+* or one of its affiliates ("Cypress") and is protected by and subject to
+* worldwide patent protection (United States and foreign),
+* United States copyright laws and international treaty provisions.
+* Therefore, you may use this Software only as provided in the license
+* agreement accompanying the software package from which you
+* obtained this Software ("EULA").
 * If no EULA applies, Cypress hereby grants you a personal, non-exclusive,
-* non-transferable license to copy, modify, and compile the Software source
-* code solely for use in connection with Cypress's integrated circuit products.
-* Any reproduction, modification, translation, compilation, or representation
-* of this Software except as specified above is prohibited without the express
-* written permission of Cypress.
+* non-transferable license to copy, modify, and compile the Software
+* source code solely for use in connection with Cypress's
+* integrated circuit products.  Any reproduction, modification, translation,
+* compilation, or representation of this Software except as specified
+* above is prohibited without the express written permission of Cypress.
 *
 * Disclaimer: THIS SOFTWARE IS PROVIDED AS-IS, WITH NO WARRANTY OF ANY KIND,
 * EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, NONINFRINGEMENT, IMPLIED
@@ -37,16 +38,16 @@
 * not authorize its products for use in any products where a malfunction or
 * failure of the Cypress product may reasonably be expected to result in
 * significant property damage, injury or death ("High Risk Product"). By
-* including Cypress's product in a High Risk Product, the manufacturer of such
-* system or application assumes all risk of such use and in doing so agrees to
-* indemnify Cypress against all liability.
+* including Cypress's product in a High Risk Product, the manufacturer
+* of such system or application assumes all risk of such use and in doing
+* so agrees to indemnify Cypress against all liability.
 *******************************************************************************/
 
 #ifndef MEM_CONFIG_SFDP_H
 #define MEM_CONFIG_SFDP_H
 #include "cy_smif_memslot.h"
 
-#define CY_SMIF_CFG_TOOL_VERSION           (210)
+#define CY_SMIF_CFG_TOOL_VERSION           (230)
 
 /* Supported QSPI Driver version */
 #define CY_SMIF_DRV_VERSION_REQUIRED       (100)
@@ -62,24 +63,38 @@
 
 #define CY_SMIF_DEVICE_NUM 1
 
-extern cy_stc_smif_mem_cmd_t Auto_detect_SFDP_SlaveSlot_0_readCmd;
-extern cy_stc_smif_mem_cmd_t Auto_detect_SFDP_SlaveSlot_0_writeEnCmd;
-extern cy_stc_smif_mem_cmd_t Auto_detect_SFDP_SlaveSlot_0_writeDisCmd;
-extern cy_stc_smif_mem_cmd_t Auto_detect_SFDP_SlaveSlot_0_eraseCmd;
-extern cy_stc_smif_mem_cmd_t Auto_detect_SFDP_SlaveSlot_0_chipEraseCmd;
-extern cy_stc_smif_mem_cmd_t Auto_detect_SFDP_SlaveSlot_0_programCmd;
-extern cy_stc_smif_mem_cmd_t Auto_detect_SFDP_SlaveSlot_0_readStsRegQeCmd;
-extern cy_stc_smif_mem_cmd_t Auto_detect_SFDP_SlaveSlot_0_readStsRegWipCmd;
-extern cy_stc_smif_mem_cmd_t Auto_detect_SFDP_SlaveSlot_0_writeStsRegQeCmd;
-extern cy_stc_smif_mem_cmd_t Auto_detect_SFDP_SlaveSlot_0_readSfdpCmd;
+extern cy_stc_smif_mem_cmd_t SFDP_SlaveSlot_0_readCmd;
+extern cy_stc_smif_mem_cmd_t SFDP_SlaveSlot_0_writeEnCmd;
+extern cy_stc_smif_mem_cmd_t SFDP_SlaveSlot_0_writeDisCmd;
+extern cy_stc_smif_mem_cmd_t SFDP_SlaveSlot_0_eraseCmd;
+extern cy_stc_smif_mem_cmd_t SFDP_SlaveSlot_0_chipEraseCmd;
+extern cy_stc_smif_mem_cmd_t SFDP_SlaveSlot_0_programCmd;
+extern cy_stc_smif_mem_cmd_t SFDP_SlaveSlot_0_readStsRegQeCmd;
+extern cy_stc_smif_mem_cmd_t SFDP_SlaveSlot_0_readStsRegWipCmd;
+extern cy_stc_smif_mem_cmd_t SFDP_SlaveSlot_0_writeStsRegQeCmd;
+extern cy_stc_smif_mem_cmd_t SFDP_SlaveSlot_0_readSfdpCmd;
 
-extern cy_stc_smif_mem_device_cfg_t deviceCfg_Auto_detect_SFDP_SlaveSlot_0;
+extern cy_stc_smif_mem_device_cfg_t deviceCfg_SFDP_SlaveSlot_0;
 
-extern cy_stc_smif_mem_config_t Auto_detect_SFDP_SlaveSlot_0;
-extern cy_stc_smif_mem_config_t* smifMemConfigsSfdp[CY_SMIF_DEVICE_NUM];
+extern const cy_stc_smif_mem_config_t SFDP_SlaveSlot_0;
 
-extern cy_stc_smif_block_config_t smifBlockConfigSfdp;
+#define Auto_detect_SFDP_SlaveSlot_0_readCmd SFDP_SlaveSlot_0_readCmd
+#define Auto_detect_SFDP_SlaveSlot_0_writeEnCmd SFDP_SlaveSlot_0_writeEnCmd
+#define Auto_detect_SFDP_SlaveSlot_0_writeDisCmd SFDP_SlaveSlot_0_writeDisCmd
+#define Auto_detect_SFDP_SlaveSlot_0_eraseCmd SFDP_SlaveSlot_0_eraseCmd
+#define Auto_detect_SFDP_SlaveSlot_0_chipEraseCmd SFDP_SlaveSlot_0_chipEraseCmd
+#define Auto_detect_SFDP_SlaveSlot_0_programCmd SFDP_SlaveSlot_0_programCmd
+#define Auto_detect_SFDP_SlaveSlot_0_readStsRegQeCmd SFDP_SlaveSlot_0_readStsRegQeCmd
+#define Auto_detect_SFDP_SlaveSlot_0_readStsRegWipCmd SFDP_SlaveSlot_0_readStsRegWipCmd
+#define Auto_detect_SFDP_SlaveSlot_0_writeStsRegQeCmd SFDP_SlaveSlot_0_writeStsRegQeCmd
+#define Auto_detect_SFDP_SlaveSlot_0_readSfdpCmd SFDP_SlaveSlot_0_readSfdpCmd
+#define deviceCfg_Auto_detect_SFDP_SlaveSlot_0 deviceCfg_SFDP_SlaveSlot_0
+#define Auto_detect_SFDP_SlaveSlot_0 SFDP_SlaveSlot_0
+
+extern const cy_stc_smif_mem_config_t* const smifMemConfigsSfdp[CY_SMIF_DEVICE_NUM];
+
+extern const cy_stc_smif_block_config_t smifBlockConfigSfdp;
 
 
-#endif /* MEM_CONFIG_SFDP_H */
+#endif /*CYCFG_QSPI_MEMSLOT_H*/
 
