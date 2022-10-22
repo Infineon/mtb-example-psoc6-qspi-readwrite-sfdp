@@ -4,10 +4,10 @@
 * Description: This is the source code for the CE228954 - PSoC 6 MCU QSPI Flash
 *              Read and Write Using SFDP example for ModusToolbox.
 *
-* Related Document: See README.md
+* Related Document: See README.md 
 *
 *******************************************************************************
-* Copyright 2019-2021, Cypress Semiconductor Corporation (an Infineon company) or
+* Copyright 2019-2022, Cypress Semiconductor Corporation (an Infineon company) or
 * an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
 *
 * This software, including source code, documentation and related
@@ -41,7 +41,7 @@
 
 #include "mem_config_sfdp.h"
 #include "cyhal.h"
-#include "cybsp.h"
+#include "cybsp.h" 
 #include "cy_retarget_io.h"
 #include "cy_serial_flash_qspi.h"
 
