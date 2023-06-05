@@ -7,7 +7,7 @@
 * Related Document: See README.md 
 *
 *******************************************************************************
-* Copyright 2019-2022, Cypress Semiconductor Corporation (an Infineon company) or
+* Copyright 2019-2023, Cypress Semiconductor Corporation (an Infineon company) or
 * an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
 *
 * This software, including source code, documentation and related
@@ -39,12 +39,11 @@
 * so agrees to indemnify Cypress against all liability.
 *******************************************************************************/
 
-#include "mem_config_sfdp.h"
 #include "cyhal.h"
 #include "cybsp.h" 
 #include "cy_retarget_io.h"
 #include "cy_serial_flash_qspi.h"
-
+#include "cycfg_qspi_memslot.h"
 /*******************************************************************************
 * Macros
 ********************************************************************************/
@@ -158,8 +157,8 @@ int main(void)
     result = cyhal_gpio_init(CYBSP_USER_LED, CYHAL_GPIO_DIR_OUTPUT,
               CYHAL_GPIO_DRIVE_STRONG, CYBSP_LED_STATE_OFF);
     check_status("User LED initialization failed", result);
-        
-    result = cy_serial_flash_qspi_init(smifMemConfigsSfdp[MEM_SLOT_NUM], CYBSP_QSPI_D0,
+
+    result = cy_serial_flash_qspi_init(&SFDP_SlaveSlot_0, CYBSP_QSPI_D0,
               CYBSP_QSPI_D1, CYBSP_QSPI_D2, CYBSP_QSPI_D3, NC, NC, NC, NC,
               CYBSP_QSPI_SCK, CYBSP_QSPI_SS, QSPI_BUS_FREQUENCY_HZ);
     check_status("Serial Flash initialization failed", result);
